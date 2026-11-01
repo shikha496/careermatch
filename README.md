@@ -1,55 +1,325 @@
-# Career Match AI
+SkillGap Prep 🚀
 
-Streamlit frontend with a FastAPI backend for resume analysis and interview
-practice. The existing ATS/evidence analysis remains local. Optional AI features
-use Gemini for structured resume analysis and Groq for interview questions and
-coaching; when a cloud provider is not configured or unavailable, requests fall
-back to the configured Ollama model. If all applicable providers are unavailable,
-the AI request returns a clear error rather than fabricated output.
+An AI-powered career preparation platform that helps job seekers identify skill gaps, analyze resume compatibility, and prepare for interviews.
 
-## Setup
+📌 Project Overview
 
-Use Python 3.10 or newer. From the project root:
+SkillGap Prep is a career development platform designed to help students, fresh graduates, and job seekers prepare for their desired careers.
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-Copy-Item .env.example .env
-```
+The platform allows users to upload their resumes, compare their skills against job descriptions, identify missing skills, and receive recommendations for improving their employability.
 
-Add your own `GROQ_API_KEY` and/or `GEMINI_API_KEY` to `.env`. Never commit
-credentials. Alternatively, install and start Ollama, then pull the configured
-local model (default `llama3.2:3b`).
+The project currently includes a React-based frontend and a Python FastAPI backend with PDF/DOCX resume extraction and rule-based skill matching.
 
-## Run
+Project Status: In Development
+🎯 Objectives
+Analyze resumes against job descriptions.
+Identify matching and missing skills.
+Calculate an estimated career compatibility score.
+Recommend skills that users should improve.
+Provide an interview preparation environment.
+Build a centralized career preparation dashboard.
+✨ Features
+1. Dashboard
+Centralized career preparation dashboard.
+Career statistics cards.
+Navigation between different tools.
+Responsive interface.
+2. Career Match AI
+Resume upload interface.
+PDF and DOCX support.
+Job description input.
+Resume text extraction.
+Skill identification.
+Matching and missing skill detection.
+Estimated compatibility percentage.
+Skill improvement recommendations.
+3. Interview IQ — Planned
+Technical interview practice.
+Behavioral interview questions.
+Mock interview sessions.
+Answer evaluation.
+Personalized feedback.
+4. Skill Gap Analysis — Planned
+Identify skill deficiencies.
+Analyze job requirements.
+Recommend learning paths.
+Track skill development.
+5. User Authentication — Planned
+User registration.
+Login and logout.
+Personal user dashboard.
+Saved analysis reports.
+🛠️ Technology Stack
+Technology	Purpose
+React.js	Frontend development
+Vite	Frontend development server
+JavaScript	Frontend functionality
+CSS3	UI styling
+Lucide React	Icons
+Python	Backend programming
+FastAPI	REST API framework
+Uvicorn	Backend server
+PyPDF	PDF text extraction
+python-docx	DOCX text extraction
+📂 Project Structure
+text
+skillgap-prep/
+│
+├── backend/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   │
+│   ├── components/
+│   │   ├── Sidebar.jsx
+│   │   ├── Header.jsx
+│   │   ├── StatCard.jsx
+│   │   └── ToolCard.jsx
+│   │
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── CareerMatch.jsx
+│   │   ├── InterviewIQ.jsx
+│   │   └── SkillAnalysis.jsx
+│   │
+│   ├── styles/
+│   │   └── App.css
+│   │
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .venv/
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── index.html
+└── README.md
 
-Start the backend in one terminal:
+⚙️ Installation and Setup
+Prerequisites
 
-```powershell
-.\.venv\Scripts\python.exe run_server.py
-```
+Install the following before starting:
 
-Start the Streamlit frontend in a second terminal:
+Node.js
+Python
+Visual Studio Code
+Git (optional, for version control)
+Step 1: Clone the Repository
 
-```powershell
-.\.venv\Scripts\python.exe -m streamlit run frontend/app.py --server.address 127.0.0.1 --server.port 8501
-```
+If you have uploaded the project to GitHub:
 
-The backend is available at `http://127.0.0.1:8000` and the UI at
-`http://127.0.0.1:8501`. Configure `CAREER_MATCH_API_URL` if the frontend must
-connect to a backend at another address.
+bash
+git clone YOUR_REPOSITORY_URL
+cd skillgap-prep
 
-## AI routing
 
-| Feature | Primary | Fallback |
-| --- | --- | --- |
-| Resume analysis | Gemini | Ollama |
-| Interview questions and coaching | Groq | Ollama |
+Alternatively, open your existing project folder in VS Code.
 
-`GET /api/health` reports which providers have credentials/configuration, not
-whether a provider or local model is currently reachable. AI response endpoints
-return HTTP 502 with provider details if neither the primary nor fallback works.
-The resume analysis endpoint is `POST /api/ai/resume-analysis` (multipart fields
-`file` and `job_description`). Existing local ATS analysis remains at
-`POST /api/analyze-resume`.
+Step 2: Install Frontend Dependencies
+
+Open the terminal in the project root directory.
+
+bash
+npm install
+
+Step 3: Install Python Backend Dependencies
+
+Create a virtual environment:
+
+bash
+py -m venv .venv
+
+
+Activate it on Windows PowerShell:
+
+powershell
+.venv\Scripts\Activate.ps1
+
+
+If PowerShell blocks activation:
+
+powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+
+Then activate again:
+
+powershell
+.venv\Scripts\Activate.ps1
+
+
+Install backend dependencies:
+
+bash
+pip install -r backend/requirements.txt
+
+▶️ Running the Project
+
+The frontend and backend must run simultaneously.
+
+Terminal 1: Start the Backend
+
+From the project root directory:
+
+bash
+python -m uvicorn main:app --reload --app-dir backend --port 8000
+
+
+Backend URL:
+
+http://127.0.0.1:8000/
+
+Interactive API documentation:
+
+http://127.0.0.1:8000/docs
+
+Terminal 2: Start the Frontend
+
+Open another terminal in VS Code:
+
+bash
+npm run dev
+
+
+Frontend URL:
+
+http://localhost:5173/
+
+🔌 Backend API Documentation
+GET /
+
+Checks whether the backend is running.
+
+Example response:
+
+json
+{
+  "message": "Welcome to SkillGap Prep API",
+  "status": "running"
+}
+
+POST /analyze
+
+Analyzes a resume against a job description.
+
+Request type: multipart/form-data
+
+Parameter	Type	Description
+resume	File	PDF or DOCX resume
+job_description	String	Target job description
+
+Example response:
+
+json
+{
+  "success": true,
+  "analysis_type": "rule_based_skill_matching",
+  "match_score": 75,
+  "resume_skills": [
+    "html",
+    "css",
+    "javascript",
+    "react"
+  ],
+  "required_skills": [
+    "html",
+    "css",
+    "javascript",
+    "react",
+    "python",
+    "git"
+  ],
+  "matched_skills": [
+    "html",
+    "css",
+    "javascript",
+    "react"
+  ],
+  "missing_skills": [
+    "python",
+    "git"
+  ],
+  "total_required_skills": 6,
+  "recommendations": [
+    "Improve your python skills",
+    "Improve your git skills"
+  ]
+}
+
+
+Note: The example response is illustrative. Actual results depend on the uploaded resume and job description.
+
+🧠 How Career Match Works
+
+The current resume analysis process follows these steps:
+
+User uploads a PDF or DOCX resume.
+Backend validates the uploaded file.
+Resume text is extracted.
+User-provided job description is processed.
+Supported skills are identified using predefined skill keywords 
+skillgap-prep/
+│
+├── backend/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   │
+│   ├── components/
+│   │   ├── Sidebar.jsx
+│   │   ├── Header.jsx
+│   │   ├── StatCard.jsx
+│   │   └── ToolCard.jsx
+│   │
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── CareerMatch.jsx
+│   │   ├── InterviewIQ.jsx
+│   │   └── SkillAnalysis.jsx
+│   │
+│   ├── styles/
+│   │   └── App.css
+│   │
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .venv/
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── index.html
+└── README.md
+skillgap-prep/
+│
+├── backend/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .gitignore
+├── .venv/
+├── README.md
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── index.htmlv

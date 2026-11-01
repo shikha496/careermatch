@@ -1,0 +1,11 @@
+{
+  "name": "career-match-interview-iq-frontend",
+  "version": "1.0.0",
+  "description": "Production-grade SaaS frontend for Career Match AI & Interview IQ",
+  "main": "script.js",
+  "scripts": {
+    "start": "python app.py"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

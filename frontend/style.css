@@ -1,0 +1,154 @@
+
+.eyebrow {
+    color: #60a5fa;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading {
+    margin: 25px 0 18px;
+}
+
+.section-heading h2 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.section-heading p,
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.input-panel h3 {
+    margin-bottom: 18px;
+}
+
+.input-panel input,
+.input-panel select {
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid #374151;
+    color: white;
+    padding: 13px;
+    border-radius: 9px;
+    margin-bottom: 15px;
+}
+
+.question-box {
+    background: #0f172a;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.question-box pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    line-height: 1.8;
+}
+
+.empty-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.results-pane h3 {
+    color: #f3f4f6;
+    margin-bottom: 10px;
+}
+
+.results-pane p {
+    line-height: 1.7;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.feature-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 13px;
+    padding: 22px;
+}
+
+.feature-card span {
+    font-size: 27px;
+}
+
+.feature-card h3 {
+    margin: 12px 0 8px;
+}
+
+.recorder-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 18px 0;
+}
+
+.recorder-controls button {
+    flex: 1;
+}
+
+#timer {
+    font-size: 20px;
+    font-weight: 700;
+    color: #60a5fa;
+}
+
+footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 2;
+    margin-top: 40px;
+}
+
+@media(max-width: 850px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+}

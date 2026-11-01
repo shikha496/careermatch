@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Match AI | Interview IQ</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="logo">⚡</span>
+            <h2>Career Match AI</h2>
+        </div>
+
+        <div class="control-group">
+            <label>Execution Tier</label>
+            <select id="tier-select">
+                <option value="free">Free Tier (Local Ollama)</option>
+                <option value="pro">AI Pro Tier</option>
+            </select>
+        </div>
+
+        <div class="status-box">
+            <span class="status-dot"></span>
+            System Operational
+        </div>
+
+        <div class="sidebar-footer">
+            <p>Powered by</p>
+            <strong>Python • FastAPI • Ollama</strong>
+            <p>Local AI Career Platform</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header>
+            <div>
+                <span class="eyebrow">YOUR AI CAREER ASSISTANT</span>
+                <h1>Career Match AI & Interview IQ</h1>
+                <p>Analyze your resume. Improve your skills. Practice interviews with AI.</p>
+            </div>
+        </header>
+
+        <div class="tabs">
+
+            <button class="tab-btn active" onclick="switchTab('resume')">
+                📄 Career Match AI
+            </button>
+
+            <button class="tab-btn" onclick="switchTab('interview')">
+                🎙️ Interview IQ Playground
+            </button>
+
+        </div>
+
+        <!-- RESUME TAB -->
+
+        <section id="resume-tab" class="tab-content active">
+
+            <div class="section-heading">
+                <h2>Resume Skill Gap Analyzer</h2>
+                <p>Discover how well your resume matches your dream job.</p>
+            </div>
+
+            <div class="card">
+
+                <div class="grid-2">
+
+                    <div class="input-panel">
+
+                        <h3>📄 Upload Your Resume</h3>
+
+                        <label for="resume-file">Resume PDF</label>
+
+                        <input
+                            type="file"
+                            id="resume-file"
+                            accept=".pdf"
+                        >
+
+                        <label for="job-desc">Target Job Description</label>
+
+                        <textarea
+                            id="job-desc"
+                            placeholder="Paste your target job description here..."
+                        ></textarea>
+
+                        <button id="analyze-btn">
+                            Analyze My Resume →
+                        </button>
+
+                    </div>
+
+                    <div class="results-pane" id="resume-results">
+
+                        <div class="empty-icon">📊</div>
+
+                        <h3>Your Analysis Appears Here</h3>
+
+                        <p>
+                            Upload your resume and enter a job description
+                            to discover your skill match.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <span>🎯</span>
+                    <h3>Skill Matching</h3>
+                    <p>Identify matching and missing job skills.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span>📈</span>
+                    <h3>ATS Analysis</h3>
+                    <p>Understand your resume compatibility.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span>✨</span>
+                    <h3>STAR Enhancement</h3>
+                    <p>Improve your professional experience stories.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- INTERVIEW TAB -->
+
+        <section id="interview-tab" class="tab-content">
+
+            <div class="section-heading">
+                <h2>Interview IQ Playground</h2>
+                <p>Practice interviews and receive AI-powered feedback.</p>
+            </div>
+
+            <div class="card">
+
+                <div class="grid-2">
+
+                    <div class="input-panel">
+
+                        <h3>🤖 AI Mock Interview</h3>
+
+                        <label for="role-input">Job Role</label>
+
+                        <input
+                            type="text"
+                            id="role-input"
+                            value="Backend Developer"
+                        >
+
+                        <label for="category-input">Interview Category</label>
+
+                        <select id="category-input">
+                            <option>Technical</option>
+                            <option>HR</option>
+                            <option>Behavioral</option>
+                            <option>Managerial</option>
+                        </select>
+
+                        <label for="difficulty-input">Difficulty</label>
+
+                        <select id="difficulty-input">
+                            <option>Beginner</option>
+                            <option selected>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+
+                        <button id="gen-q-btn">
+                            💡 Generate AI Questions
+                        </button>
+
+                        <div id="question-box" class="question-box">
+                            <p>
+                                Your AI-generated interview questions
+                                will appear here.
+                            </p>
+                        </div>
+
+                        <hr>
+
+                        <h3>🎙️ Speech Practice</h3>
+
+                        <div class="recorder-controls">
+
+                            <button id="record-btn" class="record-btn">
+                                🔴 Start Recording
+                            </button>
+
+                            <span id="timer">00:00</span>
+
+                        </div>
+
+                        <textarea
+                            id="transcript-input"
+                            placeholder="Enter your interview answer or speech transcript here..."
+                        ></textarea>
+
+                        <button id="evaluate-audio-btn">
+                            📈 Analyze Speech Fluency
+                        </button>
+
+                    </div>
+
+                    <div class="results-pane" id="interview-results">
+
+                        <div class="empty-icon">🎤</div>
+
+                        <h3>Your Interview Report</h3>
+
+                        <p>
+                            Your speaking pace, filler words,
+                            vocabulary and feedback will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            Career Match AI & Interview IQ © 2026
+            <br>
+            Built with Python, FastAPI and Local Ollama
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="./script.js"></script>
+
+</body>
+</html>

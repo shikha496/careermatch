@@ -1,0 +1,6 @@
+-r frontend/requirements.txt
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
+python-docx>=1.1.0
+scikit-learn>=1.4.0
